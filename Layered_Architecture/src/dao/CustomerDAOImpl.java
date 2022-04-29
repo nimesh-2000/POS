@@ -21,7 +21,7 @@ public class CustomerDAOImpl {
         }
         return allCustomers;
     }
-
+     //save customer
     public boolean saveCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
 
         Connection connection = DBConnection.getDbConnection().getConnection();
