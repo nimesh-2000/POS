@@ -29,7 +29,7 @@ public class ItemDAOImpl {
         pstm.setString(1, code);
         return pstm.executeUpdate() > 0;
     }
-
+    //add item
     public boolean addItem(ItemDTO dto) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement("INSERT INTO Item (code, description, unitPrice, qtyOnHand) VALUES (?,?,?,?)");
