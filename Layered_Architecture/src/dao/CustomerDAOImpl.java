@@ -31,13 +31,20 @@ public class CustomerDAOImpl {
         pstm.setString(3, dto.getAddress());
         return pstm.executeUpdate()>0;
     }
-
-    public void updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
+     //update customer
+    public boolean updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement("UPDATE Customer SET name=?, address=? WHERE id=?");
         pstm.setString(1, dto.getName());
         pstm.setString(2, dto.getAddress());
         pstm.setString(3, dto.getId());
-        pstm.executeUpdate();
+        return pstm.executeUpdate()>0;
+    }
+    //exist customer
+    public boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getDbConnection().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT id FROM Customer WHERE id=?");
+        pstm.setString(1, id);
+        return pstm.executeQuery().next();
     }
 }
