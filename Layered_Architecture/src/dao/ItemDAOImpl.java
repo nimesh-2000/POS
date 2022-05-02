@@ -49,7 +49,7 @@ public class ItemDAOImpl {
         pstm.setString(4, dto.getCode());
         return pstm.executeUpdate() > 0;
     }
-
+    //exist item
     public boolean existItem(String code) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement("SELECT code FROM Item WHERE code=?");
